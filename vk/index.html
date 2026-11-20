@@ -4,15 +4,45 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <meta name="robots" content="noindex">
-<title>Вход выполнен — ZEDDD</title>
-<link rel="stylesheet" href="../style.css?v=2">
+<title>Вход через VK ID — ZEDDD</title>
+<link rel="stylesheet" href="../style.css?v=3">
 </head>
 <body>
 <div class="wrap">
 <header><a class="logo" href="../">ZEDDD</a></header>
-<h1>Вход через VK ID выполнен</h1>
-<p class="lead">Можно закрыть эту страницу и вернуться в сервис ZEDDD.</p>
-<footer>© 2026 ZEDDD · <a href="../privacy.html">Политика конфиденциальности</a></footer>
+<div class="doc" style="padding:24px 0 60px">
+  <div id="wait"><h1>Проверяем вход…</h1><p class="lead">Секунду.</p></div>
+  <div id="ok" style="display:none">
+    <div class="who" style="display:flex;margin-bottom:18px"><img id="who-img" alt=""><div><div id="who-name" style="font-size:20px;font-weight:700"></div><div class="ok">Вход через VK ID выполнен</div></div></div>
+    <p class="lead">Так администратор сообщества подключает аккаунт к сервису ZEDDD. Это пробный вход: ключ доступа не сохранён и уже отозван.</p>
+    <a class="btn" href="../">Вернуться на сайт</a>
+  </div>
+  <div id="none" style="display:none"><h1>Вход через VK ID</h1><p class="lead">Эта страница принимает ответ ВКонтакте после входа.</p><a class="btn" href="../#login">Войти через VK ID</a></div>
+  <div id="bad" style="display:none"><h1>Вход не завершён</h1><p class="lead" id="bad-text">Попробуйте ещё раз.</p><a class="btn" href="../#login">Попробовать ещё раз</a></div>
 </div>
+<footer><span>© 2026 ZEDDD</span><a href="../privacy.html">Политика конфиденциальности</a></footer>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/@vkid/sdk@2.6.10/dist-sdk/umd/index.js"></script>
+<script src="../vk.js"></script>
+<script>
+(function () {
+  function show(id) { ['wait', 'ok', 'none', 'bad'].forEach(function (x) { document.getElementById(x).style.display = x === id ? 'block' : 'none'; }); }
+  var q = new URLSearchParams(location.search);
+  if (q.get('error')) { document.getElementById('bad-text').textContent = 'ВКонтакте вернул отказ во входе. Попробуйте ещё раз.'; return show('bad'); }
+  if (!window.VKIDSDK) return show('bad');
+  ZEDDD_VK.finish(window.VKIDSDK).then(function (u) {
+    if (!u) return show('none');
+    document.getElementById('who-name').textContent = ((u.first_name || '') + ' ' + (u.last_name || '')).trim() || 'Аккаунт ВКонтакте';
+    if (u.avatar) document.getElementById('who-img').src = u.avatar;
+    history.replaceState(null, '', location.pathname);   // убрать code из адресной строки
+    show('ok');
+  }).catch(function (e) {
+    console.error('VK ID:', e);
+    var why = e && (e.error_description || e.message || e.error || (typeof e === 'object' ? JSON.stringify(e) : e));
+    if (why) document.getElementById('bad-text').textContent = 'Попробуйте ещё раз. Причина: ' + String(why).slice(0, 160);
+    show('bad');
+  });
+})();
+</script>
 </body>
 </html>

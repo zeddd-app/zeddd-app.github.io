@@ -132,7 +132,7 @@
   });
   new VKID.OneTap()
     .render({ container: document.getElementById('vkid'), showAlternativeLogin: false })
-    .on(VKID.WidgetEvents.ERROR, fail)
+    .on(VKID.WidgetEvents.ERROR, function (e) { console.warn('VK ID widget:', e); })
     .on(VKID.OneTapInternalEvents.LOGIN_SUCCESS, function (p) {
       err.style.display = 'none';
       VKID.Auth.exchangeCode(p.code, p.device_id).then(function (t) {

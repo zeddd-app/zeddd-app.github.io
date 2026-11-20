@@ -3,44 +3,150 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>ZEDDD — публикация товаров для поставщиков</title>
-<meta name="description" content="ZEDDD оформляет и публикует карточки товаров поставщиков рынка «Садовод» в их Telegram-каналы и сообщества ВКонтакте.">
+<title>ZEDDD — публикация товаров в Telegram и ВКонтакте</title>
+<meta name="description" content="ZEDDD оформляет карточки товаров поставщиков рынка «Садовод» и публикует их в Telegram-каналы и сообщества ВКонтакте самих поставщиков.">
 <link rel="stylesheet" href="style.css">
 </head>
 <body>
 <div class="wrap">
 <header>
   <a class="logo" href="./">ZEDDD</a>
-  <nav><a href="#how">Как работает</a><a href="privacy.html">Конфиденциальность</a><a href="#contact">Контакты</a></nav>
+  <nav><a href="#how" class="hide-m">Как работает</a><a href="#example" class="hide-m">Пример</a><a href="#access">Доступы ВК</a><a href="privacy.html">Конфиденциальность</a></nav>
 </header>
 
-<h1>Публикация товаров для поставщиков рынка «Садовод»</h1>
-<p class="lead">ZEDDD оформляет объявления поставщиков одежды в единый аккуратный вид и публикует их в каналы и сообщества самих поставщиков. Поставщику не нужно вручную выкладывать каждый товар в несколько мест.</p>
-
-<h2 id="how">Как это работает</h2>
-<div class="card">
-<ol class="steps">
-  <li>Поставщик присылает фото товара и описание (цена, размеры, ткань) в нашего Telegram-бота.</li>
-  <li>Сервис оформляет карточку товара: название, цена, размеры, состав — по единому шаблону.</li>
-  <li>Готовый пост приходит на проверку. Публикация происходит только после нажатия «Выложить».</li>
-  <li>Пост выходит в Telegram-канал поставщика и в его сообщество ВКонтакте.</li>
-</ol>
+<div class="hero">
+  <h1>Один пост — сразу в Telegram и&nbsp;ВКонтакте</h1>
+  <p class="lead">ZEDDD оформляет объявления поставщиков одежды рынка «Садовод» в аккуратные карточки товара и публикует их в Telegram-канал и сообщество ВКонтакте поставщика. Без ручного копирования в каждую площадку.</p>
+  <div class="actions">
+    <a class="btn" href="#login">Войти через VK ID</a>
+    <a class="btn ghost" href="#example">Посмотреть пример</a>
+  </div>
 </div>
 
-<h2>Публикация во ВКонтакте</h2>
-<div class="card">
-<p>Для ВКонтакте используется авторизация через VK ID. Администратор сообщества входит один раз, и сервис публикует записи с фотографиями товаров на стену <b>только тех сообществ</b>, где у этого аккаунта есть права администратора или редактора.</p>
-<p style="margin-bottom:0">Сервис не читает личные сообщения, не публикует на личной странице, не пишет комментарии и не собирает данные подписчиков. Доступ можно отозвать в любой момент.</p>
+<section id="how">
+  <h2>Как это работает</h2>
+  <p class="sub">Поставщик ничего не настраивает сам: присылает товар и подтверждает публикацию.</p>
+  <div class="grid4">
+    <div class="card step"><b>1</b><h3>Поставщик присылает товар</h3><p>Фото и описание: цена, размеры, ткань — в Telegram-бота сервиса.</p></div>
+    <div class="card step"><b>2</b><h3>Сервис оформляет карточку</h3><p>Цены, размеры и состав разбираются из текста поставщика и собираются по единому шаблону.</p></div>
+    <div class="card step"><b>3</b><h3>Поставщик проверяет</h3><p>Готовый пост приходит на просмотр. Ничего не публикуется без кнопки «Выложить».</p></div>
+    <div class="card step"><b>4</b><h3>Публикация</h3><p>Пост выходит в Telegram-канал поставщика и на стену его сообщества ВКонтакте.</p></div>
+  </div>
+</section>
+
+<section id="example">
+  <h2>Пример поста</h2>
+  <p class="sub">Один и тот же товар. Для ВКонтакте отдельная версия текста: без эмодзи и без ссылок на сторонние мессенджеры — покупатель пишет напрямую в сообщество.</p>
+  <div class="grid2">
+    <div class="card post">
+      <div class="post-head"><span class="dot" style="background:var(--tg)"></span>Telegram-канал поставщика</div>
+      <div class="photo">фото товара</div>
+      <div class="caption"><b>Спортивный костюм на молнии</b>
+<i>Толстовка с капюшоном и свободные брюки из мягкой трёхнитки.</i>
+
+<b>Опт — 2 200 ₽</b>
+<b>Штучно — 2 400 ₽</b>
+
+<b>Размер:</b> S, M, L
+<b>Ткань:</b> <b>Трёхнитка</b> без начёса
+<b>Производство:</b> Фабричный <b>Китай</b>
+
+<b>Заказать</b> · <span class="lnk">TELEGRAM</span> · <span class="lnk">INFO</span></div>
+    </div>
+    <div class="card post">
+      <div class="post-head"><span class="dot" style="background:var(--vk)"></span>Сообщество ВКонтакте поставщика</div>
+      <div class="photo">фото товара</div>
+      <div class="caption"><b>Спортивный костюм на молнии</b>
+Толстовка с капюшоном и свободные брюки из мягкой трёхнитки.
+
+Опт — 2 200 ₽
+Штучно — 2 400 ₽
+
+Размер: S, M, L
+Ткань: трёхнитка без начёса
+Производство: фабричный Китай
+
+Заказать: напишите в сообщения сообщества.</div>
+      <div class="note">Запись публикуется от имени сообщества, с фотографиями товара (до 10 шт.).</div>
+    </div>
+  </div>
+</section>
+
+<section id="access">
+  <h2>Какие доступы ВКонтакте нужны и зачем</h2>
+  <p class="sub">Вход выполняется через VK ID. Сервис работает только со стенами тех сообществ, где у вошедшего аккаунта есть права администратора или редактора.</p>
+  <div class="card" style="padding:6px 8px;overflow-x:auto">
+    <table>
+      <tr><th>Доступ</th><th>Методы API</th><th>Для чего</th></tr>
+      <tr><td><b>Фотографии</b> (photos)</td><td><code>photos.getWallUploadServer</code><br><code>photos.saveWallPhoto</code></td><td>Загрузить фото товара для записи на стене сообщества.</td></tr>
+      <tr><td><b>Стена</b> (wall)</td><td><code>wall.post</code></td><td>Опубликовать запись с товаром на стене сообщества от имени сообщества.</td></tr>
+      <tr><td class="no">Не запрашиваем</td><td class="no" colspan="2">Личные сообщения, друзья, публикации на личной странице, комментарии, данные подписчиков.</td></tr>
+    </table>
+  </div>
+</section>
+
+<section id="login">
+  <div class="login">
+    <div>
+      <h2>Вход через VK ID</h2>
+      <p class="sub" style="margin-bottom:12px">Так администратор сообщества подключает свой аккаунт к сервису. Здесь можно проверить вход: после него страница покажет ваше имя.</p>
+      <ul class="clean no">
+        <li>На этой странице ключ доступа никуда не сохраняется и сразу отзывается.</li>
+        <li>Отключить сервис можно в любой момент в настройках VK ID.</li>
+      </ul>
+    </div>
+    <div class="card">
+      <div id="vkid"></div>
+      <div class="who" id="who"><img id="who-img" alt=""><div><div id="who-name"></div><div class="ok">Вход выполнен</div></div></div>
+      <div class="err" id="err"></div>
+    </div>
+  </div>
+</section>
+
+<section id="contact">
+  <h2>Контакты</h2>
+  <p class="sub">По вопросам подключения и работы сервиса пишите во ВКонтакте.</p>
+  <a class="btn" href="https://vk.com/id691106140" target="_blank" rel="noopener">Написать во ВКонтакте</a>
+</section>
+
+<footer><span>© 2026 ZEDDD</span><a href="privacy.html">Политика конфиденциальности</a></footer>
 </div>
 
-<h2>Кому подходит</h2>
-<p>Поставщикам женской и мужской одежды, которые ведут свой канал в Telegram и сообщество во ВКонтакте и выкладывают по несколько товаров в день.</p>
-
-<h2 id="contact">Контакты</h2>
-<p>По вопросам подключения и работы сервиса пишите нам во ВКонтакте.</p>
-<p id="vk-contact"><a class="btn" href="https://vk.com/id691106140" target="_blank" rel="noopener">Написать во ВКонтакте</a></p>
-
-<footer>© 2026 ZEDDD · <a href="privacy.html">Политика конфиденциальности</a></footer>
-</div>
+<script src="https://cdn.jsdelivr.net/npm/@vkid/sdk@2.6.10/dist-sdk/umd/index.js"></script>
+<script>
+(function () {
+  var err = document.getElementById('err');
+  function fail(e) {
+    console.error('VK ID:', e);
+    err.textContent = 'Не удалось выполнить вход. Попробуйте ещё раз.';
+    err.style.display = 'block';
+  }
+  if (!window.VKIDSDK) { fail('sdk not loaded'); return; }
+  var VKID = window.VKIDSDK;
+  VKID.Config.init({
+    app: 54902302,
+    redirectUrl: 'https://zeddd-app.github.io/vk/',
+    responseMode: VKID.ConfigResponseMode.Callback,
+    source: VKID.ConfigSource.LOWCODE,
+    scope: ''
+  });
+  new VKID.OneTap()
+    .render({ container: document.getElementById('vkid'), showAlternativeLogin: false })
+    .on(VKID.WidgetEvents.ERROR, fail)
+    .on(VKID.OneTapInternalEvents.LOGIN_SUCCESS, function (p) {
+      err.style.display = 'none';
+      VKID.Auth.exchangeCode(p.code, p.device_id).then(function (t) {
+        return VKID.Auth.userInfo(t.access_token).then(function (r) {
+          var u = r.user || {};
+          document.getElementById('who-name').textContent = ((u.first_name || '') + ' ' + (u.last_name || '')).trim();
+          if (u.avatar) document.getElementById('who-img').src = u.avatar;
+          document.getElementById('vkid').style.display = 'none';
+          document.getElementById('who').style.display = 'flex';
+          return VKID.Auth.logout(t.access_token);   // демо: ключ сразу отзывается
+        });
+      }).catch(fail);
+    });
+})();
+</script>
 </body>
 </html>

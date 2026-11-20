@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>ZEDDD — публикация товаров в Telegram и ВКонтакте</title>
 <meta name="description" content="ZEDDD оформляет карточки товаров поставщиков рынка «Садовод» и публикует их в Telegram-каналы и сообщества ВКонтакте самих поставщиков.">
-<link rel="stylesheet" href="style.css?v=2">
+<link rel="stylesheet" href="style.css?v=3">
 </head>
 <body>
 <div class="wrap">
@@ -40,7 +40,7 @@
   <div class="grid2">
     <div class="card post">
       <div class="post-head"><span class="dot" style="background:var(--tg)"></span>Telegram-канал поставщика</div>
-      <div class="photo">фото товара</div>
+      <div class="album"><img src="img/p1.jpg" alt="Спортивный костюм, голубой" loading="lazy"><img src="img/p2.jpg" alt="Спортивный костюм, коричневый" loading="lazy"><img src="img/p3.jpg" alt="Спортивный костюм, красный" loading="lazy"><img src="img/p4.jpg" alt="Все цвета костюма" loading="lazy"></div>
       <div class="caption"><b>Спортивный костюм на молнии</b>
 <i>Толстовка с капюшоном и свободные брюки из мягкой трёхнитки.</i>
 
@@ -55,7 +55,7 @@
     </div>
     <div class="card post">
       <div class="post-head"><span class="dot" style="background:var(--vk)"></span>Сообщество ВКонтакте поставщика</div>
-      <div class="photo">фото товара</div>
+      <div class="album"><img src="img/p1.jpg" alt="Спортивный костюм, голубой" loading="lazy"><img src="img/p2.jpg" alt="Спортивный костюм, коричневый" loading="lazy"><img src="img/p3.jpg" alt="Спортивный костюм, красный" loading="lazy"><img src="img/p4.jpg" alt="Все цвета костюма" loading="lazy"></div>
       <div class="caption"><b>Спортивный костюм на молнии</b>
 Толстовка с капюшоном и свободные брюки из мягкой трёхнитки.
 
@@ -95,10 +95,10 @@
         <li>Отключить сервис можно в любой момент в настройках VK ID.</li>
       </ul>
     </div>
-    <div class="card">
-      <div id="vkid"></div>
-      <div class="who" id="who"><img id="who-img" alt=""><div><div id="who-name"></div><div class="ok">Вход выполнен</div></div></div>
+    <div class="card" style="text-align:center">
+      <button class="vkbtn" id="vkbtn" type="button"><svg width="24" height="24" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12.8 17.3c-5.5 0-8.6-3.8-8.7-10h2.8c.1 4.6 2.1 6.5 3.7 6.9V7.3h2.6v4c1.6-.2 3.3-2 3.8-4h2.6c-.4 2.4-2.2 4.2-3.5 4.9 1.3.6 3.3 2.2 4.1 5.1h-2.9c-.6-1.9-2.1-3.4-4.1-3.6v3.6h-.4z"/></svg>Войти через VK ID</button>
       <div class="err" id="err"></div>
+      <p class="no" style="font-size:13px;margin:12px 0 0">Откроется страница ВКонтакте, затем вы вернётесь на сайт.</p>
     </div>
   </div>
 </section>
@@ -112,41 +112,16 @@
 <footer><span>© 2026 ZEDDD</span><a href="privacy.html">Политика конфиденциальности</a></footer>
 </div>
 
-<script src="https://cdn.jsdelivr.net/npm/@vkid/sdk@2.6.10/dist-sdk/umd/index.js"></script>
+<script src="vk.js"></script>
 <script>
-(function () {
-  var err = document.getElementById('err');
-  function fail(e) {
+document.getElementById('vkbtn').onclick = function () {
+  ZEDDD_VK.login().catch(function (e) {
     console.error('VK ID:', e);
-    err.textContent = 'Не удалось выполнить вход. Попробуйте ещё раз.';
+    var err = document.getElementById('err');
+    err.textContent = 'Не удалось открыть вход ВКонтакте. Попробуйте ещё раз.';
     err.style.display = 'block';
-  }
-  if (!window.VKIDSDK) { fail('sdk not loaded'); return; }
-  var VKID = window.VKIDSDK;
-  VKID.Config.init({
-    app: 54902302,
-    redirectUrl: 'https://zeddd-app.github.io/vk/',
-    responseMode: VKID.ConfigResponseMode.Callback,
-    source: VKID.ConfigSource.LOWCODE,
-    scope: ''
   });
-  new VKID.OneTap()
-    .render({ container: document.getElementById('vkid'), showAlternativeLogin: false })
-    .on(VKID.WidgetEvents.ERROR, function (e) { console.warn('VK ID widget:', e); })
-    .on(VKID.OneTapInternalEvents.LOGIN_SUCCESS, function (p) {
-      err.style.display = 'none';
-      VKID.Auth.exchangeCode(p.code, p.device_id).then(function (t) {
-        return VKID.Auth.userInfo(t.access_token).then(function (r) {
-          var u = r.user || {};
-          document.getElementById('who-name').textContent = ((u.first_name || '') + ' ' + (u.last_name || '')).trim();
-          if (u.avatar) document.getElementById('who-img').src = u.avatar;
-          document.getElementById('vkid').style.display = 'none';
-          document.getElementById('who').style.display = 'flex';
-          return VKID.Auth.logout(t.access_token);   // демо: ключ сразу отзывается
-        });
-      }).catch(fail);
-    });
-})();
+};
 </script>
 </body>
 </html>

@@ -38,7 +38,6 @@ th{color:var(--muted);font-weight:600;font-size:13px;text-transform:uppercase;le
 code{font:13px/1.4 ui-monospace,SFMono-Regular,Menlo,monospace;background:var(--accent-soft);color:var(--accent);padding:2px 6px;border-radius:6px;white-space:nowrap}
 .no{color:var(--muted)}
 .login{display:grid;grid-template-columns:1.1fr 1fr;gap:24px;align-items:center}
-#vkid{min-height:48px;max-width:360px}
 .who{display:none;align-items:center;gap:14px;margin-top:6px}
 .who img{width:52px;height:52px;border-radius:50%;object-fit:cover;background:var(--line)}
 .who .ok{color:var(--ok);font-weight:600;font-size:14px}
@@ -52,3 +51,8 @@ a{color:var(--accent)}
 .doc h2{font-size:21px;margin:32px 0 8px}
 @media (max-width:820px){.grid4{grid-template-columns:1fr 1fr}.login{grid-template-columns:1fr}}
 @media (max-width:620px){h1{font-size:30px}.grid2,.grid4{grid-template-columns:1fr}nav a{margin-left:14px}nav a.hide-m{display:none}section{padding:36px 0}}
+.album{display:grid;grid-template-columns:2fr 1fr;grid-template-rows:repeat(3,1fr);gap:2px;aspect-ratio:1/1;background:var(--line)}
+.album img{width:100%;height:100%;object-fit:cover;display:block}
+.album img:first-child{grid-row:1/4}
+.vkbtn{display:inline-flex;align-items:center;justify-content:center;gap:10px;width:100%;max-width:340px;background:var(--vk);color:#fff;border:0;border-radius:10px;padding:13px 18px;font-size:16px;font-weight:600;cursor:pointer}
+.vkbtn:hover{filter:brightness(1.07)}
